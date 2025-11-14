@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="BRPS.Views.Controls.ScheduledJobView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" FontSize="11"
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="ParameterNames" Source="{Binding ParameterNames}"/>
+            <CollectionViewSource x:Key="ParameterTypes" Source="{Binding ParameterTypes}"/>
+            <CollectionViewSource x:Key="Occurences" Source="{Binding Occurences}"/>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="Margin" Value="2,2"/>
+                <Setter Property="Height" Value="24" />
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="Margin" Value="2,2"/>
+                <Setter Property="Height" Value="24" />
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="2,2"/>
+                <Setter Property="Height" Value="24" />
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="GridHeaderStyle" TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="Blue"/>
+                <Setter Property="Height" Value="24"/>
+            </Style>
+            <!--<DataTemplate x:Name="parameterNamesTemplate" Targe">
+                <ComboBox DataContext="{Binding Path=ParameterNames}"/>
+            </DataTemplate>
+            <DataTemplate x:Name="parameterTypesTemplate" DataType="{Binding}">
+                <ComboBox DataContext="{Binding Path=ParameterTypes}"/>
+            </DataTemplate>-->
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Description" Margin="2,2,2,3"/>
+        <TextBox x:Name="txtDescription" Grid.Row="0" Grid.Column="1"  Text="{Binding Path=Job.Description}" Margin="2,2,0,3" Width="300"/>
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="Occurence" Margin="2,2,2,3"  />
+        <ComboBox x:Name="cboOccurence" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource Occurences}}" 
+                    SelectedItem="{Binding Path=Job.Occurence, Mode=TwoWay}" Margin="2,2,0,3">
+
+        </ComboBox>
+        <Label Grid.Row="2" Grid.Column="0" Content="Interval" Margin="2,3,2,2"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <TextBox x:Name="txtInverval" Width="60" Text="{Binding Path=Job.Interval}"></TextBox>
+            <Label Content="mins" />
+        </StackPanel>
+        
+        <Label Grid.Row="3" Grid.Column="0" Content="From Time" Margin="2,2,2,3"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">  
+            <TextBox x:Name="txtFromTime"   Text="{Binding Path=Job.From_Time}" Margin="2,2,0,3"/>
+            <Label Content="(HH:MM)"/>
+        </StackPanel>
+        <Label Grid.Row="4" Grid.Column="0" Content="End Time" Margin="2,3,2,2"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+            <TextBox x:Name="txtEndTime"   Text="{Binding Path=Job.End_Time}" Margin="2,3,0,2"/>
+            <Label Content="(HH:MM)"/>
+        </StackPanel>
+        <Label Grid.Row="5" Grid.Column="0" Content="Process" Margin="2,3,2,2"/>
+        <TextBox x:Name="txtProcess" Grid.Row="5" Grid.Column="1"  Text="{Binding Path=Job.Process}" Width="300" Margin="2,3,0,2"/>
+        <Expander x:Name="paramsExpander" Header="Parameters" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="Bold">
+            <DataGrid x:Name="lvParameters"  AutoGenerateColumns="False" ItemsSource="{Binding Path=ScheduledJobParams}" Margin="2,4,2,4" HorizontalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="colOrder" Header="Order" MinWidth="40"  Binding="{Binding Path=Param_Order}" HeaderStyle="{StaticResource GridHeaderStyle}"/>                 
+                    <!--<DataGridTemplateColumn x:Name="colName" Header="Name" Width="120" HeaderStyle="{StaticResource GridHeaderStyle}" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Param_Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate x:Name="ParamNameTemplate">
+                                <ComboBox x:Name="cboName" ItemsSource="{Binding Source={StaticResource ParameterNames}, Mode=OneWay}" 
+                                          Text="{Binding Path=Param_Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"
+                                            Height="20" IsEditable="True" Margin="0"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridComboBoxColumn x:Name="colName" Header="Name"  MinWidth="120" ItemsSource="{Binding Source={StaticResource ParameterNames}}" 
+                                            SelectedItemBinding="{Binding Path=Param_Type, Mode=TwoWay}"
+                                            HeaderStyle="{StaticResource GridHeaderStyle}" />
+                    <DataGridComboBoxColumn x:Name="colType" Header="Type"  MinWidth="80" ItemsSource="{Binding Source={StaticResource ParameterTypes}}" 
+                                            SelectedItemBinding="{Binding Path=Param_Type, Mode=TwoWay}"
+                                            HeaderStyle="{StaticResource GridHeaderStyle}" />
+                    <DataGridTextColumn x:Name="colValue" Header="Value"  MinWidth="120" Binding="{Binding Path=Param_Value}"
+                                          HeaderStyle="{StaticResource GridHeaderStyle}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Expander>
+    </Grid>
+
+</UserControl>

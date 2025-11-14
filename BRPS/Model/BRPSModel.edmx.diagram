@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddc1e4053b4741d1af8616d2023e7dff" Name="Party" ZoomLevel="71" >
+        <EntityTypeShape EntityType="BRPSModel.Address" Width="1.5" PointX="4.25" PointY="3.875" />
+        <EntityTypeShape EntityType="BRPSModel.Client" PointX="6.625" PointY="1" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BRPSModel.Party" Width="1.5" PointX="4.125" PointY="0.625" />
+        <EntityTypeShape EntityType="BRPSModel.Salesperson" Width="1.5" PointX="1.5" PointY="0.625" />
+        <AssociationConnector Association="BRPSModel.FK_Party_Address" />
+        <AssociationConnector Association="BRPSModel.FK_Party_Client" />
+        <AssociationConnector Association="BRPSModel.FK_Party_Salesperson" />
+        <EntityTypeShape EntityType="BRPSModel.ExchangeRate" Width="1.5" PointX="4.25" PointY="8.375" />
+        <EntityTypeShape EntityType="BRPSModel.Holiday" Width="1.5" PointX="1.625" PointY="8.75" />
+        <EntityTypeShape EntityType="BRPSModel.ClientAccount" PointX="11.375" PointY="14.375" Width="2.75" />
+        <AssociationConnector Association="BRPSModel.FK_Client_ClientAccount" />
+        <EntityTypeShape EntityType="BRPSModel.sysdiagram" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BRPSModel.Code_Mapping" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BRPSModel.Trans_Code_Desc" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BRPSModel.Transaction_Type" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BRPSModel.Market" Width="2" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BRPSModel.Trade_NarrativeInfo" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="BRPSModel.Instrument_Price" Width="1.5" PointX="9.375" PointY="13.75" />
+        <EntityTypeShape EntityType="BRPSModel.Client_CashBalance" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BRPSModel.Client_StockBalance" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BRPSModel.Trade_Status" Width="1.5" PointX="9.375" PointY="6.75" />
+      </Diagram>
+      <Diagram DiagramId="04bb3b38eda34a2d91f56aa5e0502032" Name="Trade" ZoomLevel="111" >
+        <EntityTypeShape EntityType="BRPSModel.Market" Width="1.5" PointX="8.625" PointY="0.5" />
+        <EntityTypeShape EntityType="BRPSModel.TradeCharge" Width="1.5" PointX="4.25" PointY="4.375" />
+        <EntityTypeShape EntityType="BRPSModel.Warrant" Width="1.5" PointX="8.875" PointY="3.875" />
+        <EntityTypeShape EntityType="BRPSModel.Trade" Width="1.5" PointX="2" PointY="0.875" />
+        <AssociationConnector Association="BRPSModel.FK_Trade_TradeCharge" />
+        <EntityTypeShape EntityType="BRPSModel.TradeCharge_AmendedComm" Width="1.5" PointX="4.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BRPSModel.Trade_Cancelled" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="BRPSModel.Instrument" Width="1.5" PointX="6.625" PointY="4.375" />
+        <AssociationConnector Association="BRPSModel.Warrant_Instr_Ref_FK" />
+      </Diagram>
+      <Diagram DiagramId="dd863756f7ec4d05b0a6b8fc7e1af3e6" Name="ScheduledJob" >
+        <EntityTypeShape EntityType="BRPSModel.ScheduledJob" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="BRPSModel.ScheduledJobParam" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="BRPSModel.FK_ScheduledJobParam_Job_Id" />
+        <EntityTypeShape EntityType="BRPSModel.AppLog" Width="1.5" PointX="5" PointY="0.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

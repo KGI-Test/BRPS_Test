@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{863743FD-E306-483F-8905-24CFABC392E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BRPS</RootNamespace>
+    <AssemblyName>BRPS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>\\amf-fileserver\home%24\zhanghaiping\Apps\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>BRPS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E7DEE85B022ADCA638646E272B6B2817160ED735</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BRPS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Repository.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37226, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DAO\ConnectionSettingsProvider.cs" />
+    <Compile Include="DAO\IConnectionSettingsProvider.cs" />
+    <Compile Include="Managers\DataManagerBase.cs" />
+    <Compile Include="Managers\ScheduleJobService.cs" />
+    <Compile Include="Model\Address.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppLog.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BRPSModel.Context.cs" />
+    <Compile Include="Model\BRPSModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BRPSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BRPSModel.cs" />
+    <Compile Include="Model\BRPSDbContext.e.cs" />
+    <Compile Include="Model\BRPSModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Client.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Client.e.cs" />
+    <Compile Include="Model\ClientAccount.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClientAccount.g.cs" />
+    <Compile Include="Model\Client_CashBalance.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Client_StockBalance.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Code_Mapping.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExchangeRate.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExchangeRate.e.cs" />
+    <Compile Include="Model\Holiday.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Holiday.e.cs" />
+    <Compile Include="Model\Instrument.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Instrument_Price.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Instrument_Price.e.cs" />
+    <Compile Include="Model\Market.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Party.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Salesperson.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Salesperson.e.cs" />
+    <Compile Include="Model\ScheduledJob.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduledJobParam.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade.e.cs" />
+    <Compile Include="Model\TradeCharge.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TradeCharge_AmendedComm.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade_Cancelled.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade_NarrativeInfo.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade_NarrativeInfo.e.cs" />
+    <Compile Include="Model\Trade_Status.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade_Status.e.cs" />
+    <Compile Include="Model\Transaction_Type.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trans_Code_Desc.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Warrant.cs">
+      <DependentUpon>BRPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AM_Trade_Respository.cs" />
+    <Compile Include="Repositories\ClientBalanceRepository.cs" />
+    <Compile Include="Repositories\TradeCancelledRepository.cs" />
+    <Compile Include="Repositories\ExchangeRateRespository.cs" />
+    <Compile Include="Repositories\HolidayRespository.cs" />
+    <Compile Include="Repositories\InstrumentPriceRepository.cs" />
+    <Compile Include="Repositories\TradeCharge_AmendedComm_Respository.cs" />
+    <Compile Include="Repositories\TradeNarrativeRespository.cs" />
+    <Compile Include="Repositories\Trade_Status_Respository.cs" />
+    <Compile Include="Views\Controls\GradientHeader.xaml.cs">
+      <DependentUpon>GradientHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ScheduledJobExpander.xaml.cs">
+      <DependentUpon>ScheduledJobExpander.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ScheduledJobView.xaml.cs">
+      <DependentUpon>ScheduledJobView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditScheduledJobWindow.xaml.cs">
+      <DependentUpon>EditScheduledJobWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\EditScheduledJobVM.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Model\Exetensions\ScheduledJobEx.cs" />
+    <Compile Include="Repositories\AppLogRepository.cs" />
+    <Compile Include="Repositories\InstrumentRepository.cs" />
+    <Compile Include="Repositories\PartyRespository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\ScheduledJobRepository.cs" />
+    <Compile Include="Repositories\TradeRepository.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Page Include="Views\Controls\GradientHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ScheduledJobExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ScheduledJobView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAO\GenericDAO.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\EditScheduledJobWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\BRPSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BRPSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\BRPSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BRPSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BRPS.pfx" />
+    <None Include="BRPS_TemporaryKey.pfx" />
+    <None Include="Model\BRPSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BRPSModel.Context1.cs</LastGenOutput>
+      <DependentUpon>BRPSModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\BRPSModel.edmx.diagram">
+      <DependentUpon>BRPSModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\BRPSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BRPSModel1.cs</LastGenOutput>
+      <DependentUpon>BRPSModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Error.png" />
+    <Resource Include="Images\Reports.png" />
+    <Resource Include="Images\Success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Repository.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\None.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Repository.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KGILog\KGILog.csproj">
+      <Project>{55b9357f-8fa9-460a-937e-aa5e50aadc65}</Project>
+      <Name>KGILog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

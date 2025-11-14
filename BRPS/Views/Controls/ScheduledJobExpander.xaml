@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="BRPS.Views.Controls.ScheduledJobExpander"
+             xmlns:local="clr-namespace:BRPS.Views.Controls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    <!--<DataTemplate>-->
+    <StackPanel x:Name="mainPanel" HorizontalAlignment="Left" Orientation="Horizontal" Width="Auto" >
+        <StackPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Lavender" Offset="0"/>
+                <GradientStop Color="LightBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </StackPanel.Background>
+        <Expander HorizontalAlignment="Left" FontSize="11" Foreground="Black" FontWeight="Bold" Padding="1,1">
+            <Expander.Header>
+                <Grid>
+                    <Grid.Resources>                       
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="2,2"/>
+                            <Setter Property="Background"  Value="Transparent"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Height" Value="Auto"/>
+                        </Style>                       
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition MinWidth="200"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <CheckBox IsChecked="{Binding Path=Selected}" VerticalAlignment="Center" IsThreeState="False"/>
+                    <TextBlock Grid.Column="1" x:Name="txtJobDecription" Text="{Binding Path=Job.Description}"   />
+                    <TextBlock Grid.Column="2" x:Name="txtBusinessDate" Text="{Binding Path=Business_Date, StringFormat='yyyy-MM-dd'}" ToolTip="Business Date" />
+                    <Image Grid.Column="3" x:Name="ImgStatus"  VerticalAlignment="Center" Margin="2,2" ToolTip="{Binding Path=Message}" Width="16" Height="16">     
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="..\..\Images\None.png"/>
+                                <Style.Triggers>                                    
+                                    <DataTrigger Binding="{Binding Path=Status}" Value="0" >
+                                        <Setter Property="Source" Value="..\..\Images\None.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=Status}" Value="1" >
+                                        <Setter Property="Source" Value="..\..\Images\Success.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=Status}" Value="2" >
+                                        <Setter Property="Source" Value="..\..\Images\Error.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <TextBlock Grid.Column="4" x:Name="txtLastExecution" Text="{Binding Path=Last_Execution_Time, StringFormat='yyyy-MM-dd HH:mm:ss'}" 
+                               ToolTip="Last Execution Time" />
+                </Grid>          
+                
+            </Expander.Header>
+            <local:ScheduledJobView ViewMode="True"></local:ScheduledJobView>           
+        </Expander> 
+    </StackPanel>       
+</UserControl>

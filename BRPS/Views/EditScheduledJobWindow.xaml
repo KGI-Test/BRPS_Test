@@ -1,0 +1,29 @@
+﻿<Window x:Class="BRPS.Views.EditScheduledJobWindow"
+        xmlns:local="clr-namespace:BRPS.Views.Controls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore" Title="Edit Scheduled Job" WindowStartupLocation="CenterScreen"
+        WindowState="Normal" WindowStyle="SingleBorderWindow" Height="450" Width="600" ResizeMode="NoResize"
+        DataContext="{Binding Source={StaticResource Locator}, Path=EditScheduledJobVM}">    
+    <Window.Background>
+        <ImageBrush ImageSource="/BRPS;component/Images/background.jpg"/>
+    </Window.Background>
+    <Grid Margin="4,5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"   >        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:ScheduledJobView Grid.Row="0" HorizontalAlignment="Stretch" ViewMode="false" DataContext="{Binding Path=ScheduledJob}"></local:ScheduledJobView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <!--<Button x:Name="btnTest" Content="Test" Width="70" Margin="2" Click="btnTest_Click" />-->
+            <Button x:Name="btnSave" Content="Save" Height="24" Width="70" Margin="2" Command="{Binding SaveCommand}"/>
+            <Button x:Name="btnCancel" Content="Cancel" Height="24" Width="70" Margin="2" Command="{Binding CancelCommand}"/>
+            <Button x:Name="btnClose" Content="Close" Width="70" Margin="2" Click="btnClose_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

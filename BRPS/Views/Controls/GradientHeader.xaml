@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="BRPS.Views.Controls.GradientHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" FontWeight="Bold" VerticalContentAlignment="Center"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <Control.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop x:Name="GradientStartColor" Color="White" Offset="0"/>
+            <GradientStop x:Name="GradientEndColor" Color="#FFA2C6F1" Offset="1"/>
+        </LinearGradientBrush>
+    </Control.Background>
+    <ContentPresenter/>
+    
+</UserControl>

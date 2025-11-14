@@ -1,0 +1,2133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BRPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Party_Ref" />
+            <PropertyRef Name="Address_Code" />
+          </Key>
+          <Property Name="Party_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Address_Code" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Contact_Name" Type="varchar" MaxLength="35" />
+          <Property Name="Contact_Title" Type="varchar" MaxLength="35" />
+          <Property Name="Address_1" Type="varchar" MaxLength="35" />
+          <Property Name="Address_2" Type="varchar" MaxLength="35" />
+          <Property Name="Address_3" Type="varchar" MaxLength="35" />
+          <Property Name="Address_4" Type="varchar" MaxLength="35" />
+          <Property Name="Address_5" Type="varchar" MaxLength="35" />
+          <Property Name="Post_Code" Type="varchar" MaxLength="12" />
+          <Property Name="Telephone_No" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppLog">
+          <Key>
+            <PropertyRef Name="Log_Id" />
+          </Key>
+          <Property Name="Log_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Job_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Log_Time" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_Number" />
+          </Key>
+          <Property Name="Client_Number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Client_Title" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Short_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Long_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Marital_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Birth_Incorp_Date" Type="datetime" />
+          <Property Name="SG_PR" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Client_Account_Number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Identification_Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Unique_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Issuing_Country" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Ownership_Category_Code" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Principal_Business" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Residence_Code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Occupation" Type="varchar" MaxLength="30" />
+          <Property Name="Employment_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Employer_Name" Type="varchar" MaxLength="1000" />
+          <Property Name="EU_Corporate_Sector" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Financial_nature" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="LEI_Name" Type="varchar" MaxLength="30" />
+          <Property Name="LEI" Type="varchar" MaxLength="30" />
+          <Property Name="Parent_Company" Type="varchar" MaxLength="30" />
+          <Property Name="Location" Type="varchar" MaxLength="10" />
+          <Property Name="Paidup_Captital" Type="varchar" MaxLength="20" />
+          <Property Name="Annual_Income" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Net_Worth" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Accredited_Investor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Risk_Tolerance" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="High_Risk_Factors" Type="varchar" MaxLength="100" />
+          <Property Name="AC_Openning_Doc" Type="varchar" MaxLength="100" />
+          <Property Name="Standing_Authority" Type="varchar" MaxLength="100" />
+          <Property Name="Trading_Account_Type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Client_Type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Client_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Client_CashBalance">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Account_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Ccy" Type="varchar" MaxLength="100" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Update_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Client_StockBalance">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Account_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Ccy" Type="varchar" MaxLength="100" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Update_Date" Type="datetime" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientAccount">
+          <Key>
+            <PropertyRef Name="Client_Account_Number" />
+          </Key>
+          <Property Name="Client_Account_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position_Account_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Position_Account_Category" Type="char" MaxLength="1" />
+          <Property Name="Position_Account_Origin" Type="char" MaxLength="1" />
+          <Property Name="Account_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Position_Account_Type" Type="char" MaxLength="1" />
+          <Property Name="Party_Custody_Type" Type="varchar" MaxLength="10" />
+          <Property Name="Remisier_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Activated_Date" Type="datetime" />
+          <Property Name="Closed_Date" Type="datetime" />
+          <Property Name="Suspended_Date" Type="datetime" />
+          <Property Name="Last_Amend_Date" Type="datetime" />
+          <Property Name="Last_Transction_Date" Type="datetime" />
+          <Property Name="Suspension_Reasons" Type="varchar" MaxLength="200" />
+          <Property Name="Default_Settle_Curr" Type="char" MaxLength="3" />
+          <Property Name="Contra_Eligible" Type="bit" Nullable="false" />
+          <Property Name="Is_Truth_Account" Type="bit" Nullable="false" />
+          <Property Name="Online_Eligible" Type="bit" Nullable="false" />
+          <Property Name="Buy_Limit" Type="money" />
+          <Property Name="Sell_Limit" Type="money" />
+          <Property Name="Margin_Credit_Limit" Type="money" />
+          <Property Name="GST_Status_Code" Type="char" MaxLength="10" />
+          <Property Name="Payment_Mode" Type="varchar" MaxLength="10" />
+          <Property Name="EPS_Link_Status" Type="varchar" MaxLength="10" />
+          <Property Name="EPS_Commence_Date" Type="datetime" />
+          <Property Name="EPS_Close_Date" Type="datetime" />
+          <Property Name="EPS_Bank_No" Type="varchar" MaxLength="10" />
+          <Property Name="EPS_Bank_Acct" Type="varchar" MaxLength="14" />
+          <Property Name="GIRO_Payment_Type" Type="varchar" MaxLength="10" />
+          <Property Name="GIRO_Bank_No" Type="varchar" MaxLength="10" />
+          <Property Name="GIRO_Bank_Acct" Type="varchar" MaxLength="14" />
+          <Property Name="SRS_Bank_No" Type="varchar" MaxLength="10" />
+          <Property Name="SRS_Bank_Acct" Type="varchar" MaxLength="14" />
+          <Property Name="CPF_Bank_No" Type="varchar" MaxLength="10" />
+          <Property Name="CPF_Bank_Acct" Type="varchar" MaxLength="14" />
+          <Property Name="Trade_Confirmation" Type="varchar" MaxLength="10" />
+          <Property Name="Parent_Account" Type="varchar" MaxLength="12" />
+          <Property Name="Securities_Account" Type="varchar" MaxLength="20" />
+          <Property Name="Suspense_Account" Type="varchar" MaxLength="12" />
+          <Property Name="Related_Account" Type="varchar" MaxLength="12" />
+          <Property Name="SCB_Invest_Mgmt_AC" Type="varchar" MaxLength="12" />
+          <Property Name="SCB_Truth_Account" Type="varchar" MaxLength="12" />
+          <Property Name="Relationship" Type="varchar" MaxLength="5000" />
+          <Property Name="CDP_Acct_Linkage_Status" Type="char" MaxLength="1" />
+          <Property Name="CDP_Acct_Linkage_Date" Type="datetime" />
+          <Property Name="CDP_Acct_Linkage_Revoc_Date" Type="datetime" />
+          <Property Name="CDP_Acct_Linkage_Reject_Code" Type="char" MaxLength="2" />
+          <Property Name="Client_DA_Code" Type="char" MaxLength="3" />
+          <Property Name="Capacity" Type="char" MaxLength="1" />
+          <Property Name="Segregation" Type="char" MaxLength="1" />
+          <Property Name="EPS_Bank_Name" Type="nchar" MaxLength="200" />
+          <Property Name="SGX_Client_No" Type="varchar" MaxLength="50" />
+          <Property Name="KLSE_CDS_Account_Code" Type="varchar" MaxLength="50" />
+          <Property Name="SCB_IMA_NO_SG" Type="varchar" MaxLength="50" />
+          <Property Name="SCB_TRUST_AC_NO_SG" Type="varchar" MaxLength="50" />
+          <Property Name="Status_Narrative" Type="varchar" MaxLength="5000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BRPS.dbo.Code_Mapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Code_Mapping">
+          <Key>
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Class" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Class" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mapped_Value" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="CCYPairID" />
+          </Key>
+          <Property Name="CCYPairID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Instr_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Quote_Instr_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Mid_Price" Type="numeric" Precision="16" Scale="6" Nullable="false" />
+          <Property Name="Bid_Price" Type="numeric" Precision="16" Scale="6" Nullable="false" />
+          <Property Name="Ask_Price" Type="numeric" Precision="16" Scale="6" Nullable="false" />
+          <Property Name="Price_DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Holiday_Id" />
+          </Key>
+          <Property Name="Holiday_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Holiday_Date" Type="datetime" Nullable="false" />
+          <Property Name="Weekend_Day" Type="int" Nullable="false" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instrument">
+          <Key>
+            <PropertyRef Name="Instr_Ref" />
+          </Key>
+          <Property Name="Instr_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Instr_Group" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Long_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Short_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Main_Market" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Denom_Ccy" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Denom_Qty" Type="int" Nullable="false" />
+          <Property Name="Settle_Instr" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Book" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Price_Decimal_Place" Type="int" Nullable="false" />
+          <Property Name="Price_Divisor" Type="numeric" Precision="16" Scale="6" Nullable="false" />
+          <Property Name="Price_Multiplier" Type="numeric" Precision="16" Scale="6" Nullable="false" />
+          <Property Name="Price_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Min_Tradeable_Qty" Type="int" Nullable="false" />
+          <Property Name="Qty_Decimal_Place" Type="int" Nullable="false" />
+          <Property Name="Active_Ind" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Listing_Date" Type="datetime" />
+          <Property Name="Delisting_Date" Type="datetime" />
+          <Property Name="Proprietary_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Local_Code" Type="varchar" MaxLength="20" />
+          <Property Name="SG_CDP_Code" Type="varchar" MaxLength="20" />
+          <Property Name="ISIN_Code" Type="varchar" MaxLength="20" />
+          <Property Name="BMBG_Code" Type="varchar" MaxLength="20" />
+          <Property Name="RIC_Code" Type="varchar" MaxLength="20" />
+          <Property Name="SEDL_Code" Type="varchar" MaxLength="20" />
+          <Property Name="COMM_Code" Type="varchar" MaxLength="20" />
+          <Property Name="CFI_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Security_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Country" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Domicile_Country" Type="char" MaxLength="3" />
+          <Property Name="Margin_Category" Type="char" MaxLength="20" />
+          <Property Name="Margin_Ratio" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="Margin_Limit" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="Product_Type" Type="varchar" MaxLength="10" />
+          <Property Name="Security_Tax_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Settlemet_Driver" Type="varchar" MaxLength="12" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+          <Property Name="Symbol_Code" Type="nchar" MaxLength="50" />
+          <Property Name="Close_Price" Type="numeric" Precision="18" Scale="10" />
+          <Property Name="Group_Code" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Instrument_Price">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Instr_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Close_Price" Type="float" />
+          <Property Name="Price_date" Type="datetime" />
+          <Property Name="Version_date" Type="datetime" />
+          <Property Name="Version_no" Type="int" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="Market_Code" />
+          </Key>
+          <Property Name="Market_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Market_Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Holiday_Id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value_Date_Rule_B" Type="varchar" MaxLength="10" />
+          <Property Name="Value_Date_Rule_S" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Party_Ref" />
+          </Key>
+          <Property Name="Party_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Party_Category" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Salesperson">
+          <Key>
+            <PropertyRef Name="Salesperson_Ref" />
+          </Key>
+          <Property Name="Salesperson_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Short_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Long_Name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Country" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Location" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Title" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Holiday_Calendar" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Reporting_Curr" Type="char" MaxLength="3" />
+          <Property Name="Segregation_Party" Type="varchar" MaxLength="12" />
+          <Property Name="Active" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Template" Type="bit" Nullable="false" />
+          <Property Name="Bloomberg_Ref" Type="varchar" MaxLength="20" />
+          <Property Name="Dept_Code" Type="varchar" MaxLength="20" />
+          <Property Name="Sales_Group" Type="varchar" MaxLength="20" />
+          <Property Name="GL_User_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Salesperson_Ref_1" Type="varchar" MaxLength="12" />
+          <Property Name="Salesperson_Ref_2" Type="varchar" MaxLength="12" />
+          <Property Name="Salesperson_Ref_3" Type="varchar" MaxLength="12" />
+          <Property Name="MAS_Rep_No" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SGX_TR_Code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Salesperson_Category" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Joining_Date" Type="datetime" Nullable="false" />
+          <Property Name="Departure_Date" Type="datetime" />
+          <Property Name="Obtaining_M6A_Date" Type="datetime" />
+          <Property Name="Own_Trading_AC_No_1" Type="varchar" MaxLength="12" />
+          <Property Name="Own_Trading_AC_No_2" Type="varchar" MaxLength="12" />
+          <Property Name="Own_Trading_AC_No_3" Type="varchar" MaxLength="12" />
+          <Property Name="Cost_Centre" Type="varchar" MaxLength="12" />
+          <Property Name="Backup_Salesperson" Type="varchar" MaxLength="12" />
+          <Property Name="Info_Narrative" Type="varchar" MaxLength="255" />
+          <Property Name="Status_Narrative" Type="varchar" MaxLength="255" />
+          <Property Name="Internal_Narrative" Type="varchar" MaxLength="255" />
+          <Property Name="Version_No" Type="int" Nullable="false" />
+          <Property Name="Version_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScheduledJob">
+          <Key>
+            <PropertyRef Name="Job_Id" />
+          </Key>
+          <Property Name="Job_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Depend_Job_Id" Type="int" />
+          <Property Name="Occurence" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Interval" Type="int" Nullable="false" />
+          <Property Name="From_Time" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="End_Time" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Process" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Business_Date" Type="datetime" Nullable="false" />
+          <Property Name="Last_Execution_Time" Type="datetime" />
+          <Property Name="Message" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ScheduledJobParam">
+          <Key>
+            <PropertyRef Name="Param_Id" />
+          </Key>
+          <Property Name="Param_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Job_Id" Type="int" Nullable="false" />
+          <Property Name="Param_Order" Type="int" Nullable="false" />
+          <Property Name="Param_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Param_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Param_Value" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="datetime" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Trade_Ref" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Client_Number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Trade_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Sub_Trade_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Operation_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Market" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Trade_Date" Type="datetime" Nullable="false" />
+          <Property Name="Value_Date" Type="datetime" Nullable="false" />
+          <Property Name="Instrument" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Qty" Type="bigint" Nullable="false" />
+          <Property Name="Open_Qty" Type="bigint" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Trade_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Trade_Principal" Type="money" Nullable="false" />
+          <Property Name="Settle_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Settle_Amount" Type="money" Nullable="false" />
+          <Property Name="Open_Amount" Type="money" Nullable="false" />
+          <Property Name="Exch_Rate" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Mult_Div_Ind" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Settle_Amount_SGD" Type="money" Nullable="false" />
+          <Property Name="Trade_No_Ref1" Type="bigint" Nullable="false" />
+          <Property Name="Trade_No_Ref2" Type="bigint" Nullable="false" />
+          <Property Name="Contra_Trade_Ref" Type="varchar" MaxLength="20" />
+          <Property Name="Trades_With_Accrued" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Accrued_Interest_Days" Type="int" Nullable="false" />
+          <Property Name="Accrued_Interest_Rate" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Accrued_Interest_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Accrued_Interest_Amt" Type="money" Nullable="false" />
+          <Property Name="Last_Done_Price" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Entry_Ind" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TR_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Settle_Code" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Settle_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Price_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Trade_Version" Type="int" Nullable="false" />
+          <Property Name="Trade_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Settle_Status" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Primary_Book" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PSMS_Source" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SGX_Trade_No" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="With_Reference" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Execution_Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Trans_Settle_Type" Type="char" MaxLength="4" />
+          <Property Name="Cash_Payment_Mode" Type="char" MaxLength="4" />
+          <Property Name="Cash_Payment_Status" Type="char" MaxLength="4" />
+          <Property Name="Settle_Transform" Type="char" MaxLength="4" />
+          <Property Name="Trade_Channel" Type="varchar" MaxLength="30" />
+          <Property Name="Created_Date" Type="datetime" Nullable="false" />
+          <Property Name="Amend_Date" Type="datetime" Nullable="false" />
+          <Property Name="Version_date" Type="datetime" Nullable="false" />
+          <Property Name="Version_no" Type="int" Nullable="false" />
+          <Property Name="EPS_Bank_Name" Type="nchar" MaxLength="100" />
+          <Property Name="Settle_date" Type="datetime" />
+          <Property Name="Execution_SalesPerson" Type="varchar" MaxLength="50" />
+          <Property Name="FOR_No" Type="varchar" MaxLength="200" />
+          <Property Name="Our_Nostro_Account" Type="varchar" MaxLength="500" />
+          <Property Name="Our_Nostro_BankName" Type="varchar" MaxLength="500" />
+          <Property Name="Parent_Link_Trade" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Allocation_Processing_Indicator" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Trade_Cancelled">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="datetime" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Trade_Ref" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Client_Number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Trade_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Sub_Trade_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Operation_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Market" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Trade_Date" Type="datetime" Nullable="false" />
+          <Property Name="Value_Date" Type="datetime" Nullable="false" />
+          <Property Name="Instrument" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Open_Qty" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Trade_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Trade_Principal" Type="money" Nullable="false" />
+          <Property Name="Settle_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Settle_Amount" Type="money" Nullable="false" />
+          <Property Name="Open_Amount" Type="money" Nullable="false" />
+          <Property Name="Exch_Rate" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Mult_Div_Ind" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Settle_Amount_SGD" Type="money" Nullable="false" />
+          <Property Name="Trade_No_Ref1" Type="bigint" Nullable="false" />
+          <Property Name="Trade_No_Ref2" Type="bigint" Nullable="false" />
+          <Property Name="Contra_Trade_Ref" Type="varchar" MaxLength="20" />
+          <Property Name="Trades_With_Accrued" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Accrued_Interest_Days" Type="int" Nullable="false" />
+          <Property Name="Accrued_Interest_Rate" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Accrued_Interest_Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Accrued_Interest_Amt" Type="money" Nullable="false" />
+          <Property Name="Last_Done_Price" Type="numeric" Precision="16" Scale="8" Nullable="false" />
+          <Property Name="Entry_Ind" Type="char" MaxLength="2" />
+          <Property Name="TR_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Settle_Code" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Settle_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Price_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Trade_Version" Type="int" Nullable="false" />
+          <Property Name="Trade_Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Settle_Status" Type="varchar" MaxLength="1" />
+          <Property Name="Primary_Book" Type="varchar" MaxLength="12" />
+          <Property Name="PSMS_Source" Type="varchar" MaxLength="20" />
+          <Property Name="SGX_Trade_No" Type="varchar" MaxLength="20" />
+          <Property Name="With_Reference" Type="varchar" MaxLength="20" />
+          <Property Name="Execution_Number" Type="varchar" MaxLength="20" />
+          <Property Name="Trans_Settle_Type" Type="char" MaxLength="4" />
+          <Property Name="Cash_Payment_Mode" Type="char" MaxLength="4" />
+          <Property Name="Cash_Payment_Status" Type="char" MaxLength="4" />
+          <Property Name="Settle_Transform" Type="char" MaxLength="4" />
+          <Property Name="Trade_Channel" Type="varchar" MaxLength="30" />
+          <Property Name="Created_Date" Type="datetime" Nullable="false" />
+          <Property Name="Amend_Date" Type="datetime" Nullable="false" />
+          <Property Name="Version_date" Type="datetime" Nullable="false" />
+          <Property Name="Version_no" Type="int" Nullable="false" />
+          <Property Name="EPS_Bank_Name" Type="nchar" MaxLength="100" />
+          <Property Name="Settle_date" Type="datetime" Nullable="false" />
+          <Property Name="Execution_SalesPerson" Type="varchar" MaxLength="50" />
+          <Property Name="FOR_No" Type="varchar" MaxLength="200" />
+          <Property Name="Our_Nostro_Account" Type="varchar" MaxLength="500" />
+          <Property Name="Our_Nostro_BankName" Type="varchar" MaxLength="500" />
+          <Property Name="Parent_Link_Trade" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Allocation_Processing_Indicator" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Trade_NarrativeInfo">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Narrative_Code" Type="varchar" MaxLength="500" />
+          <Property Name="Narrative" Type="varchar" MaxLength="5000" />
+          <Property Name="Version_date" Type="datetime" />
+          <Property Name="Version_no" Type="int" />
+        </EntityType>
+        <EntityType Name="Trade_Status">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="datetime" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Trade_Ref" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Trade_Type" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Settle_Status" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Settle_date" Type="datetime" />
+          <Property Name="Import_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TradeCharge">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="datetime" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Curr" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Commission" Type="money" Nullable="false" />
+          <Property Name="Commission_GST" Type="money" Nullable="false" />
+          <Property Name="Clearing_Fee" Type="money" Nullable="false" />
+          <Property Name="Clearing_Fee_GST" Type="money" Nullable="false" />
+          <Property Name="Trading_Fee" Type="money" Nullable="false" />
+          <Property Name="Trading_Fee_GST" Type="money" Nullable="false" />
+          <Property Name="Settlement_Fee" Type="money" Nullable="false" />
+          <Property Name="Stamp_Duty_Fee" Type="money" Nullable="false" />
+          <Property Name="Transaction_Levy_Fee" Type="money" Nullable="false" />
+          <Property Name="Commission_SGD" Type="money" Nullable="false" />
+          <Property Name="Commission_GST_SGD" Type="money" Nullable="false" />
+          <Property Name="Clearing_Fee_SGD" Type="money" Nullable="false" />
+          <Property Name="Clearing_Fee_GST_SGD" Type="money" Nullable="false" />
+          <Property Name="Trading_Fee_SGD" Type="money" Nullable="false" />
+          <Property Name="Trading_Fee_GST_SGD" Type="money" Nullable="false" />
+          <Property Name="Settlement_Fee_SGD" Type="money" Nullable="false" />
+          <Property Name="Stamp_Duty_Fee_SGD" Type="money" Nullable="false" />
+          <Property Name="Trans_Levy_Fee_SGD" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TradeCharge_AmendedComm">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Trade_Ref" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Trade_No" Type="bigint" Nullable="false" />
+          <Property Name="Commission" Type="money" Nullable="false" />
+          <Property Name="Trade_Date" Type="datetime" Nullable="false" />
+          <Property Name="Created_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BRPS.dbo.Trans_Code_Desc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Trans_Code_Desc">
+          <Key>
+            <PropertyRef Name="Trans_Code" />
+          </Key>
+          <Property Name="Trans_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Trans_Desc" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BRPS.dbo.Transaction_Type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Transaction_Type">
+          <Key>
+            <PropertyRef Name="Trans_Type" />
+            <PropertyRef Name="Operation_Type" />
+            <PropertyRef Name="Payment_Mode" />
+          </Key>
+          <Property Name="Trans_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operation_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Payment_Mode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Trans_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Trans_Desc" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Warrant">
+          <Key>
+            <PropertyRef Name="Instr_Ref" />
+          </Key>
+          <Property Name="Instr_Ref" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Warrant_Type" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Settle_Type" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Payment_Curr" Type="char" MaxLength="3" />
+          <Property Name="Call_Put_Ind" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Strike_Price" Type="numeric" Precision="12" Scale="9" Nullable="false" />
+          <Property Name="Expiry_Date" Type="datetime" Nullable="false" />
+          <Property Name="Last_Notice_Date" Type="datetime" Nullable="false" />
+          <Property Name="Price_Type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ratio" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="10" />
+          <Property Name="Delivery_Date" Type="datetime" />
+          <Property Name="Underlying_Instr" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Separation_Date" Type="datetime" />
+          <Property Name="Parent_Code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Party_Address">
+          <End Role="Party" Type="Self.Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Ref" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Party_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Salesperson">
+          <End Role="Party" Type="Self.Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Salesperson" Type="Self.Salesperson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Ref" />
+            </Principal>
+            <Dependent Role="Salesperson">
+              <PropertyRef Name="Salesperson_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduledJobParam_Job_Id">
+          <End Role="ScheduledJob" Type="Self.ScheduledJob" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScheduledJobParam" Type="Self.ScheduledJobParam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScheduledJob">
+              <PropertyRef Name="Job_Id" />
+            </Principal>
+            <Dependent Role="ScheduledJobParam">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trade_TradeCharge">
+          <End Role="Trade" Type="Self.Trade" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TradeCharge" Type="Self.TradeCharge" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="Business_Date" />
+              <PropertyRef Name="Trade_No" />
+            </Principal>
+            <Dependent Role="TradeCharge">
+              <PropertyRef Name="Business_Date" />
+              <PropertyRef Name="Trade_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Warrant_Instr_Ref_FK">
+          <End Role="Instrument" Type="Self.Instrument" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Warrant" Type="Self.Warrant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Instrument">
+              <PropertyRef Name="Instr_Ref" />
+            </Principal>
+            <Dependent Role="Warrant">
+              <PropertyRef Name="Instr_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetBusinessDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="date">
+          <Parameter Name="CutoffTime" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="BRPSModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppLog" EntityType="Self.AppLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_CashBalance" EntityType="Self.Client_CashBalance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_StockBalance" EntityType="Self.Client_StockBalance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientAccount" EntityType="Self.ClientAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instrument" EntityType="Self.Instrument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instrument_Price" EntityType="Self.Instrument_Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salesperson" EntityType="Self.Salesperson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduledJob" EntityType="Self.ScheduledJob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduledJobParam" EntityType="Self.ScheduledJobParam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trade" EntityType="Self.Trade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trade_Cancelled" EntityType="Self.Trade_Cancelled" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trade_NarrativeInfo" EntityType="Self.Trade_NarrativeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trade_Status" EntityType="Self.Trade_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TradeCharge" EntityType="Self.TradeCharge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TradeCharge_AmendedComm" EntityType="Self.TradeCharge_AmendedComm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warrant" EntityType="Self.Warrant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Code_Mapping" EntityType="Self.Code_Mapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Code_Mapping].[Category] AS [Category], 
+    [Code_Mapping].[Class] AS [Class], 
+    [Code_Mapping].[Type] AS [Type], 
+    [Code_Mapping].[Value] AS [Value], 
+    [Code_Mapping].[Mapped_Value] AS [Mapped_Value], 
+    [Code_Mapping].[Description] AS [Description]
+    FROM [dbo].[Code_Mapping] AS [Code_Mapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Trans_Code_Desc" EntityType="Self.Trans_Code_Desc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Trans_Code_Desc].[Trans_Code] AS [Trans_Code], 
+    [Trans_Code_Desc].[Trans_Desc] AS [Trans_Desc]
+    FROM [dbo].[Trans_Code_Desc] AS [Trans_Code_Desc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Transaction_Type" EntityType="Self.Transaction_Type" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Transaction_Type].[Trans_Type] AS [Trans_Type], 
+    [Transaction_Type].[Operation_Type] AS [Operation_Type], 
+    [Transaction_Type].[Payment_Mode] AS [Payment_Mode], 
+    [Transaction_Type].[Trans_Code] AS [Trans_Code], 
+    [Transaction_Type].[Trans_Desc] AS [Trans_Desc]
+    FROM [dbo].[Transaction_Type] AS [Transaction_Type]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Party_Address" Association="Self.FK_Party_Address">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Salesperson" Association="Self.FK_Party_Salesperson">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Salesperson" EntitySet="Salesperson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduledJobParam_Job_Id" Association="Self.FK_ScheduledJobParam_Job_Id">
+            <End Role="ScheduledJob" EntitySet="ScheduledJob" />
+            <End Role="ScheduledJobParam" EntitySet="ScheduledJobParam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trade_TradeCharge" Association="Self.FK_Trade_TradeCharge">
+            <End Role="Trade" EntitySet="Trade" />
+            <End Role="TradeCharge" EntitySet="TradeCharge" />
+          </AssociationSet>
+          <AssociationSet Name="Warrant_Instr_Ref_FK" Association="Self.Warrant_Instr_Ref_FK">
+            <End Role="Instrument" EntitySet="Instrument" />
+            <End Role="Warrant" EntitySet="Warrant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BRPSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BRPSDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="BRPSModel.Address" />
+          <EntitySet Name="AppLogs" EntityType="BRPSModel.AppLog" />
+          <EntitySet Name="Clients" EntityType="BRPSModel.Client" />
+          <EntitySet Name="Markets" EntityType="BRPSModel.Market" />
+          <EntitySet Name="Parties" EntityType="BRPSModel.Party" />
+          <EntitySet Name="Salespersons" EntityType="BRPSModel.Salesperson" />
+          <AssociationSet Name="FK_Party_Address" Association="BRPSModel.FK_Party_Address">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Client" Association="BRPSModel.FK_Party_Client">
+            <End EntitySet="Parties" Role="Party" />
+            <End EntitySet="Clients" Role="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Salesperson" Association="BRPSModel.FK_Party_Salesperson">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Salesperson" EntitySet="Salespersons" />
+          </AssociationSet>
+          <EntitySet Name="ScheduledJobs" EntityType="BRPSModel.ScheduledJob" />
+          <EntitySet Name="ScheduledJobParams" EntityType="BRPSModel.ScheduledJobParam" />
+          <AssociationSet Name="FK_ScheduledJobParam_Job_Id" Association="BRPSModel.FK_ScheduledJobParam_Job_Id">
+            <End Role="ScheduledJob" EntitySet="ScheduledJobs" />
+            <End Role="ScheduledJobParam" EntitySet="ScheduledJobParams" />
+          </AssociationSet>
+          <EntitySet Name="ExchangeRates" EntityType="BRPSModel.ExchangeRate" />
+          <EntitySet Name="Holidays" EntityType="BRPSModel.Holiday" />
+          <EntitySet Name="ClientAccounts" EntityType="BRPSModel.ClientAccount" />
+          <AssociationSet Name="FK_Client_ClientAccount" Association="BRPSModel.FK_Client_ClientAccount">
+            <End EntitySet="ClientAccounts" Role="ClientAccount" />
+            <End EntitySet="Clients" Role="Client" />
+          </AssociationSet>
+          <EntitySet Name="TradeCharges" EntityType="BRPSModel.TradeCharge" />
+          <EntitySet Name="sysdiagrams" EntityType="BRPSModel.sysdiagram" />
+          <EntitySet Name="Code_Mapping" EntityType="BRPSModel.Code_Mapping" />
+          <EntitySet Name="Trans_Code_Desc" EntityType="BRPSModel.Trans_Code_Desc" />
+          <EntitySet Name="Transaction_Type" EntityType="BRPSModel.Transaction_Type" />
+          <EntitySet Name="Trade_NarrativeInfo" EntityType="BRPSModel.Trade_NarrativeInfo" />
+          <EntitySet Name="Instrument_Price" EntityType="BRPSModel.Instrument_Price" />
+          <EntitySet Name="Warrants" EntityType="BRPSModel.Warrant" />
+          <EntitySet Name="Trades" EntityType="BRPSModel.Trade" />
+          <AssociationSet Name="FK_Trade_TradeCharge" Association="BRPSModel.FK_Trade_TradeCharge">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="TradeCharge" EntitySet="TradeCharges" />
+          </AssociationSet>
+          <EntitySet Name="Client_CashBalance" EntityType="BRPSModel.Client_CashBalance" />
+          <EntitySet Name="Client_StockBalance" EntityType="BRPSModel.Client_StockBalance" />
+          <EntitySet Name="TradeCharge_AmendedComm" EntityType="BRPSModel.TradeCharge_AmendedComm" />
+          <EntitySet Name="Trade_Status" EntityType="BRPSModel.Trade_Status" />
+          <EntitySet Name="Trade_Cancelled" EntityType="BRPSModel.Trade_Cancelled" />
+          <EntitySet Name="Instruments" EntityType="BRPSModel.Instrument" />
+          <AssociationSet Name="Warrant_Instr_Ref_FK" Association="BRPSModel.Warrant_Instr_Ref_FK">
+            <End Role="Instrument" EntitySet="Instruments" />
+            <End Role="Warrant" EntitySet="Warrants" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Party_Ref" />
+            <PropertyRef Name="Address_Code" />
+          </Key>
+          <Property Name="Party_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Address_Code" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Contact_Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Title" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Address_1" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Address_2" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Address_3" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Address_4" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Address_5" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Post_Code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Version_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_No" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Party" Relationship="BRPSModel.FK_Party_Address" FromRole="Address" ToRole="Party" />
+        </EntityType>
+        <EntityType Name="AppLog">
+          <Key>
+            <PropertyRef Name="Log_Id" />
+          </Key>
+          <Property Name="Log_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Desc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Log_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_Number" />
+          </Key>
+          <Property Name="Client_Number" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Client_Title" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Short_Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Long_Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Marital_Status" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Birth_Incorp_Date" Precision="3" Type="DateTime" />
+          <Property Name="SG_PR" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Client_Account_Number" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Identification_Type" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Unique_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Issuing_Country" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Ownership_Category_Code" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Principal_Business" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Residence_Code" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Occupation" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Employment_Status" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Employer_Name" MaxLength="1000" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EU_Corporate_Sector" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Financial_nature" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="LEI_Name" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LEI" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Parent_Company" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Location" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Paidup_Captital" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Annual_Income" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Net_Worth" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Accredited_Investor" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Risk_Tolerance" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="High_Risk_Factors" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="AC_Openning_Doc" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Standing_Authority" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Trading_Account_Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Client_Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Client_Status" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Version_No" Nullable="false" Type="Int32" />
+          <Property Name="Version_Date" Nullable="false" Precision="3" Type="DateTime" />
+          <Property Name="Status" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <NavigationProperty Name="Party" Relationship="BRPSModel.FK_Party_Client" FromRole="Client" ToRole="Party" />
+          <NavigationProperty Name="ClientAccount" Relationship="BRPSModel.FK_Client_ClientAccount" FromRole="Client" ToRole="ClientAccount" />
+          <Property Name="Country" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="Market_Code" />
+          </Key>
+          <Property Name="Market_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Holiday_Id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Value_Date_Rule_B" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Value_Date_Rule_S" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Market_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Party_Ref" />
+          </Key>
+          <Property Name="Party_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Party_Category" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Version_No" Type="Int32" Nullable="false" />
+          <Property Name="Version_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Addresses" Relationship="BRPSModel.FK_Party_Address" FromRole="Party" ToRole="Address" />
+          <NavigationProperty Name="Client" Relationship="BRPSModel.FK_Party_Client" FromRole="Party" ToRole="Client" />
+          <NavigationProperty Name="Salesperson" Relationship="BRPSModel.FK_Party_Salesperson" FromRole="Party" ToRole="Salesperson" />
+        </EntityType>
+        <EntityType Name="Salesperson">
+          <Key>
+            <PropertyRef Name="Salesperson_Ref" />
+          </Key>
+          <Property Name="Salesperson_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Short_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Long_Name" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Holiday_Calendar" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Reporting_Curr" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Segregation_Party" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Template" Type="Boolean" Nullable="false" />
+          <Property Name="Bloomberg_Ref" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Dept_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sales_Group" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GL_User_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Salesperson_Ref_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Salesperson_Ref_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Salesperson_Ref_3" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="MAS_Rep_No" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SGX_TR_Code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Salesperson_Category" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Departure_Date" Type="DateTime" Precision="3" />
+          <Property Name="Obtaining_M6A_Date" Type="DateTime" Precision="3" />
+          <Property Name="Own_Trading_AC_No_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Own_Trading_AC_No_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Own_Trading_AC_No_3" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Cost_Centre" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Backup_Salesperson" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Info_Narrative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Narrative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Narrative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Version_No" Type="Int32" Nullable="false" />
+          <Property Name="Version_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Party" Relationship="BRPSModel.FK_Party_Salesperson" FromRole="Salesperson" ToRole="Party" />
+        </EntityType>
+        <Association Name="FK_Party_Address">
+          <End Type="BRPSModel.Party" Role="Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Ref" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Party_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Client">
+          <End Type="BRPSModel.Party" Multiplicity="1" Role="Party">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.Client" Multiplicity="0..1" Role="Client" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Ref" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Client_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Salesperson">
+          <End Type="BRPSModel.Party" Role="Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.Salesperson" Role="Salesperson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Ref" />
+            </Principal>
+            <Dependent Role="Salesperson">
+              <PropertyRef Name="Salesperson_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ScheduledJob">
+          <Key>
+            <PropertyRef Name="Job_Id" />
+          </Key>
+          <Property Name="Job_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Depend_Job_Id" Type="Int32" />
+          <Property Name="Occurence" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Interval" Type="Int32" Nullable="false" />
+          <Property Name="From_Time" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="End_Time" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Process" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Business_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Last_Execution_Time" Type="DateTime" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ScheduledJobParams" Relationship="BRPSModel.FK_ScheduledJobParam_Job_Id" FromRole="ScheduledJob" ToRole="ScheduledJobParam" />
+        </EntityType>
+        <EntityType Name="ScheduledJobParam">
+          <Key>
+            <PropertyRef Name="Param_Id" />
+          </Key>
+          <Property Name="Param_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Job_Id" Type="Int32" Nullable="false" />
+          <Property Name="Param_Order" Type="Int32" Nullable="false" />
+          <Property Name="Param_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Param_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Param_Value" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ScheduledJob" Relationship="BRPSModel.FK_ScheduledJobParam_Job_Id" FromRole="ScheduledJobParam" ToRole="ScheduledJob" />
+        </EntityType>
+        <Association Name="FK_ScheduledJobParam_Job_Id">
+          <End Type="BRPSModel.ScheduledJob" Role="ScheduledJob" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.ScheduledJobParam" Role="ScheduledJobParam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScheduledJob">
+              <PropertyRef Name="Job_Id" />
+            </Principal>
+            <Dependent Role="ScheduledJobParam">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="CCYPairID" />
+          </Key>
+          <Property Name="CCYPairID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Instr_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Quote_Instr_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Mid_Price" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="Bid_Price" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="Ask_Price" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="Price_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Holiday_Id" />
+          </Key>
+          <Property Name="Holiday_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Holiday_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Weekend_Day" Type="Int32" Nullable="false" />
+          <Property Name="Version_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_No" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientAccount">
+          <Key>
+            <PropertyRef Name="Client_Account_Number" />
+          </Key>
+          <Property Name="Client_Account_Number" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Position_Account_Number" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Position_Account_Category" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Position_Account_Origin" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Account_Status" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Position_Account_Type" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Party_Custody_Type" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Remisier_Code" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Created_Date" Precision="3" Type="DateTime" />
+          <Property Name="Activated_Date" Precision="3" Type="DateTime" />
+          <Property Name="Closed_Date" Precision="3" Type="DateTime" />
+          <Property Name="Suspended_Date" Precision="3" Type="DateTime" />
+          <Property Name="Last_Amend_Date" Precision="3" Type="DateTime" />
+          <Property Name="Last_Transction_Date" Precision="3" Type="DateTime" />
+          <Property Name="Suspension_Reasons" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Default_Settle_Curr" MaxLength="3" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Contra_Eligible" Nullable="false" Type="Boolean" />
+          <Property Name="Is_Truth_Account" Nullable="false" Type="Boolean" />
+          <Property Name="Online_Eligible" Nullable="false" Type="Boolean" />
+          <Property Name="Buy_Limit" Precision="19" Scale="4" Type="Decimal" />
+          <Property Name="Sell_Limit" Precision="19" Scale="4" Type="Decimal" />
+          <Property Name="Margin_Credit_Limit" Precision="19" Scale="4" Type="Decimal" />
+          <Property Name="GST_Status_Code" MaxLength="10" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Payment_Mode" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EPS_Link_Status" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EPS_Commence_Date" Precision="3" Type="DateTime" />
+          <Property Name="EPS_Close_Date" Precision="3" Type="DateTime" />
+          <Property Name="EPS_Bank_No" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EPS_Bank_Acct" MaxLength="14" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="GIRO_Payment_Type" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="GIRO_Bank_No" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="GIRO_Bank_Acct" MaxLength="14" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SRS_Bank_No" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SRS_Bank_Acct" MaxLength="14" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CPF_Bank_No" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CPF_Bank_Acct" MaxLength="14" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Trade_Confirmation" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Parent_Account" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Securities_Account" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Suspense_Account" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Related_Account" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SCB_Invest_Mgmt_AC" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SCB_Truth_Account" MaxLength="12" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Relationship" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CDP_Acct_Linkage_Status" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="CDP_Acct_Linkage_Date" Precision="3" Type="DateTime" />
+          <Property Name="CDP_Acct_Linkage_Revoc_Date" Precision="3" Type="DateTime" />
+          <Property Name="CDP_Acct_Linkage_Reject_Code" MaxLength="2" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Client_DA_Code" MaxLength="3" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Capacity" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="Segregation" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <NavigationProperty Name="Clients" Relationship="BRPSModel.FK_Client_ClientAccount" FromRole="ClientAccount" ToRole="Client" />
+          <Property Name="EPS_Bank_Name" MaxLength="200" FixedLength="true" Unicode="true" Type="String" />
+          <Property Name="SGX_Client_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KLSE_CDS_Account_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SCB_IMA_NO_SG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SCB_TRUST_AC_NO_SG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Narrative" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Client_ClientAccount">
+          <End Type="BRPSModel.ClientAccount" Multiplicity="1" Role="ClientAccount">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.Client" Multiplicity="*" Role="Client" />
+          <ReferentialConstraint>
+            <Principal Role="ClientAccount">
+              <PropertyRef Name="Client_Account_Number" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Client_Account_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TradeCharge">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Commission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Commission_GST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Clearing_Fee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Clearing_Fee_GST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trading_Fee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trading_Fee_GST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Settlement_Fee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Stamp_Duty_Fee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Transaction_Levy_Fee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Commission_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Commission_GST_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Clearing_Fee_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Clearing_Fee_GST_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trading_Fee_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trading_Fee_GST_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Settlement_Fee_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Stamp_Duty_Fee_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trans_Levy_Fee_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Trade" Relationship="BRPSModel.FK_Trade_TradeCharge" FromRole="TradeCharge" ToRole="Trade" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Code_Mapping">
+          <Key>
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Class" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mapped_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Trans_Code_Desc">
+          <Key>
+            <PropertyRef Name="Trans_Code" />
+          </Key>
+          <Property Name="Trans_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Transaction_Type">
+          <Key>
+            <PropertyRef Name="Trans_Type" />
+            <PropertyRef Name="Operation_Type" />
+            <PropertyRef Name="Payment_Mode" />
+          </Key>
+          <Property Name="Trans_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operation_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Trade_NarrativeInfo">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Narrative_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Narrative" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Version_date" Type="DateTime" Precision="3" />
+          <Property Name="Version_no" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Instrument_Price">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Instr_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Close_Price" Type="Double" />
+          <Property Name="Price_date" Type="DateTime" Precision="3" />
+          <Property Name="Version_date" Type="DateTime" Precision="3" />
+          <Property Name="Version_no" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Warrant">
+          <Key>
+            <PropertyRef Name="Instr_Ref" />
+          </Key>
+          <Property Name="Instr_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Warrant_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Settle_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Curr" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Call_Put_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Strike_Price" Type="Decimal" Nullable="false" Precision="12" Scale="9" />
+          <Property Name="Expiry_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Last_Notice_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price_Type" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Ratio" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="Location" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Delivery_Date" Type="DateTime" Precision="3" />
+          <Property Name="Underlying_Instr" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Separation_Date" Type="DateTime" Precision="3" />
+          <Property Name="Parent_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Instrument" Relationship="BRPSModel.Warrant_Instr_Ref_FK" FromRole="Warrant" ToRole="Instrument" />
+        </EntityType>
+        <EntityType Name="Trade">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Trade_Ref" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Number" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Sub_Trade_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Operation_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Market" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Value_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Instrument" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int64" Nullable="false" />
+          <Property Name="Open_Qty" Type="Int64" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Trade_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Principal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Settle_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Open_Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Exch_Rate" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Mult_Div_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Amount_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trade_No_Ref1" Type="Int64" Nullable="false" />
+          <Property Name="Trade_No_Ref2" Type="Int64" Nullable="false" />
+          <Property Name="Contra_Trade_Ref" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Trades_With_Accrued" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Accrued_Interest_Days" Type="Int32" Nullable="false" />
+          <Property Name="Accrued_Interest_Rate" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Accrued_Interest_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Accrued_Interest_Amt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Last_Done_Price" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Entry_Ind" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TR_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Settle_Code" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Price_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Version" Type="Int32" Nullable="false" />
+          <Property Name="Trade_Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Primary_Book" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PSMS_Source" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SGX_Trade_No" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="With_Reference" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Execution_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Settle_Type" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Cash_Payment_Mode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Cash_Payment_Status" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Transform" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Channel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Created_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amend_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_no" Type="Int32" Nullable="false" />
+          <Property Name="EPS_Bank_Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Settle_date" Type="DateTime" Precision="3" />
+          <Property Name="Execution_SalesPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FOR_No" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TradeCharge" Relationship="BRPSModel.FK_Trade_TradeCharge" FromRole="Trade" ToRole="TradeCharge" />
+          <Property Name="Our_Nostro_Account" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Our_Nostro_BankName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Parent_Link_Trade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Allocation_Processing_Indicator" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Trade_TradeCharge">
+          <End Type="BRPSModel.Trade" Role="Trade" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.TradeCharge" Role="TradeCharge" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trade">
+              <PropertyRef Name="Business_Date" />
+              <PropertyRef Name="Trade_No" />
+            </Principal>
+            <Dependent Role="TradeCharge">
+              <PropertyRef Name="Business_Date" />
+              <PropertyRef Name="Trade_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Client_CashBalance">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Account_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ccy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Update_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Client_StockBalance">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Account_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ccy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Update_Date" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TradeCharge_AmendedComm">
+          <Key>
+            <PropertyRef Name="RecID" />
+          </Key>
+          <Property Name="RecID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Number" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_Ref" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Commission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trade_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Created_Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Trade_Status">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Trade_Ref" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Settle_Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Settle_date" Type="DateTime" Precision="3" />
+          <Property Name="Trade_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Import_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Trade_Cancelled">
+          <Key>
+            <PropertyRef Name="Business_Date" />
+            <PropertyRef Name="Trade_No" />
+          </Key>
+          <Property Name="Business_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trade_No" Type="Int64" Nullable="false" />
+          <Property Name="Trade_Ref" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Number" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Sub_Trade_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Operation_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Market" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trade_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Value_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Instrument" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Open_Qty" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Trade_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Principal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Settle_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Open_Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Exch_Rate" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Mult_Div_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Amount_SGD" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Trade_No_Ref1" Type="Int64" Nullable="false" />
+          <Property Name="Trade_No_Ref2" Type="Int64" Nullable="false" />
+          <Property Name="Contra_Trade_Ref" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Trades_With_Accrued" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Accrued_Interest_Days" Type="Int32" Nullable="false" />
+          <Property Name="Accrued_Interest_Rate" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Accrued_Interest_Curr" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Accrued_Interest_Amt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Last_Done_Price" Type="Decimal" Nullable="false" Precision="16" Scale="8" />
+          <Property Name="Entry_Ind" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TR_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Settle_Code" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Price_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Version" Type="Int32" Nullable="false" />
+          <Property Name="Trade_Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Primary_Book" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PSMS_Source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SGX_Trade_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="With_Reference" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Execution_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Settle_Type" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Cash_Payment_Mode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Cash_Payment_Status" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Settle_Transform" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Trade_Channel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Created_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amend_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_no" Type="Int32" Nullable="false" />
+          <Property Name="EPS_Bank_Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Settle_date" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Execution_SalesPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FOR_No" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Our_Nostro_Account" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Our_Nostro_BankName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Parent_Link_Trade" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Allocation_Processing_Indicator" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Instrument">
+          <Key>
+            <PropertyRef Name="Instr_Ref" />
+          </Key>
+          <Property Name="Instr_Ref" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Instr_Group" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Long_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Short_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Main_Market" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Denom_Ccy" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Denom_Qty" Type="Int32" Nullable="false" />
+          <Property Name="Settle_Instr" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Book" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Price_Decimal_Place" Type="Int32" Nullable="false" />
+          <Property Name="Price_Divisor" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="Price_Multiplier" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="Price_Type" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Min_Tradeable_Qty" Type="Int32" Nullable="false" />
+          <Property Name="Qty_Decimal_Place" Type="Int32" Nullable="false" />
+          <Property Name="Active_Ind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Listing_Date" Type="DateTime" Precision="3" />
+          <Property Name="Delisting_Date" Type="DateTime" Precision="3" />
+          <Property Name="Proprietary_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Local_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SG_CDP_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ISIN_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BMBG_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RIC_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEDL_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="COMM_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CFI_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Security_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Domicile_Country" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Margin_Category" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Margin_Ratio" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Margin_Limit" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Product_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Security_Tax_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Settlemet_Driver" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Version_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Version_No" Type="Int32" Nullable="false" />
+          <Property Name="Symbol_Code" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Close_Price" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Group_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Warrant" Relationship="BRPSModel.Warrant_Instr_Ref_FK" FromRole="Instrument" ToRole="Warrant" />
+        </EntityType>
+        <Association Name="Warrant_Instr_Ref_FK">
+          <End Type="BRPSModel.Instrument" Role="Instrument" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BRPSModel.Warrant" Role="Warrant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Instrument">
+              <PropertyRef Name="Instr_Ref" />
+            </Principal>
+            <Dependent Role="Warrant">
+              <PropertyRef Name="Instr_Ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BRPSModelStoreContainer" CdmEntityContainer="BRPSDbContext">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="BRPSModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telephone_No" ColumnName="Telephone_No" />
+                <ScalarProperty Name="Post_Code" ColumnName="Post_Code" />
+                <ScalarProperty Name="Address_5" ColumnName="Address_5" />
+                <ScalarProperty Name="Address_4" ColumnName="Address_4" />
+                <ScalarProperty Name="Address_3" ColumnName="Address_3" />
+                <ScalarProperty Name="Address_2" ColumnName="Address_2" />
+                <ScalarProperty Name="Address_1" ColumnName="Address_1" />
+                <ScalarProperty Name="Contact_Title" ColumnName="Contact_Title" />
+                <ScalarProperty Name="Contact_Name" ColumnName="Contact_Name" />
+                <ScalarProperty Name="Address_Code" ColumnName="Address_Code" />
+                <ScalarProperty Name="Party_Ref" ColumnName="Party_Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppLogs">
+            <EntityTypeMapping TypeName="BRPSModel.AppLog">
+              <MappingFragment StoreEntitySet="AppLog">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Log_Time" ColumnName="Log_Time" />
+                <ScalarProperty Name="Job_Desc" ColumnName="Job_Desc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Log_Id" ColumnName="Log_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="BRPSModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Client_Status" ColumnName="Client_Status" />
+                <ScalarProperty Name="Client_Type" ColumnName="Client_Type" />
+                <ScalarProperty Name="Trading_Account_Type" ColumnName="Trading_Account_Type" />
+                <ScalarProperty Name="Standing_Authority" ColumnName="Standing_Authority" />
+                <ScalarProperty Name="AC_Openning_Doc" ColumnName="AC_Openning_Doc" />
+                <ScalarProperty Name="High_Risk_Factors" ColumnName="High_Risk_Factors" />
+                <ScalarProperty Name="Risk_Tolerance" ColumnName="Risk_Tolerance" />
+                <ScalarProperty Name="Accredited_Investor" ColumnName="Accredited_Investor" />
+                <ScalarProperty Name="Net_Worth" ColumnName="Net_Worth" />
+                <ScalarProperty Name="Annual_Income" ColumnName="Annual_Income" />
+                <ScalarProperty Name="Paidup_Captital" ColumnName="Paidup_Captital" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Parent_Company" ColumnName="Parent_Company" />
+                <ScalarProperty Name="LEI" ColumnName="LEI" />
+                <ScalarProperty Name="LEI_Name" ColumnName="LEI_Name" />
+                <ScalarProperty Name="Financial_nature" ColumnName="Financial_nature" />
+                <ScalarProperty Name="EU_Corporate_Sector" ColumnName="EU_Corporate_Sector" />
+                <ScalarProperty Name="Employer_Name" ColumnName="Employer_Name" />
+                <ScalarProperty Name="Employment_Status" ColumnName="Employment_Status" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Residence_Code" ColumnName="Residence_Code" />
+                <ScalarProperty Name="Principal_Business" ColumnName="Principal_Business" />
+                <ScalarProperty Name="Ownership_Category_Code" ColumnName="Ownership_Category_Code" />
+                <ScalarProperty Name="Issuing_Country" ColumnName="Issuing_Country" />
+                <ScalarProperty Name="Unique_ID" ColumnName="Unique_ID" />
+                <ScalarProperty Name="Identification_Type" ColumnName="Identification_Type" />
+                <ScalarProperty Name="Client_Account_Number" ColumnName="Client_Account_Number" />
+                <ScalarProperty Name="SG_PR" ColumnName="SG_PR" />
+                <ScalarProperty Name="Birth_Incorp_Date" ColumnName="Birth_Incorp_Date" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Long_Name" ColumnName="Long_Name" />
+                <ScalarProperty Name="Short_Name" ColumnName="Short_Name" />
+                <ScalarProperty Name="Client_Title" ColumnName="Client_Title" />
+                <ScalarProperty Name="Client_Number" ColumnName="Client_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markets">
+            <EntityTypeMapping TypeName="BRPSModel.Market">
+              <MappingFragment StoreEntitySet="Market">
+                <ScalarProperty Name="Market_Name" ColumnName="Market_Name" />
+                <ScalarProperty Name="Value_Date_Rule_S" ColumnName="Value_Date_Rule_S" />
+                <ScalarProperty Name="Value_Date_Rule_B" ColumnName="Value_Date_Rule_B" />
+                <ScalarProperty Name="Holiday_Id" ColumnName="Holiday_Id" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Market_Code" ColumnName="Market_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parties">
+            <EntityTypeMapping TypeName="BRPSModel.Party">
+              <MappingFragment StoreEntitySet="Party">
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Party_Category" ColumnName="Party_Category" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Party_Ref" ColumnName="Party_Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salespersons">
+            <EntityTypeMapping TypeName="BRPSModel.Salesperson">
+              <MappingFragment StoreEntitySet="Salesperson">
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Internal_Narrative" ColumnName="Internal_Narrative" />
+                <ScalarProperty Name="Status_Narrative" ColumnName="Status_Narrative" />
+                <ScalarProperty Name="Info_Narrative" ColumnName="Info_Narrative" />
+                <ScalarProperty Name="Backup_Salesperson" ColumnName="Backup_Salesperson" />
+                <ScalarProperty Name="Cost_Centre" ColumnName="Cost_Centre" />
+                <ScalarProperty Name="Own_Trading_AC_No_3" ColumnName="Own_Trading_AC_No_3" />
+                <ScalarProperty Name="Own_Trading_AC_No_2" ColumnName="Own_Trading_AC_No_2" />
+                <ScalarProperty Name="Own_Trading_AC_No_1" ColumnName="Own_Trading_AC_No_1" />
+                <ScalarProperty Name="Obtaining_M6A_Date" ColumnName="Obtaining_M6A_Date" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Salesperson_Category" ColumnName="Salesperson_Category" />
+                <ScalarProperty Name="SGX_TR_Code" ColumnName="SGX_TR_Code" />
+                <ScalarProperty Name="MAS_Rep_No" ColumnName="MAS_Rep_No" />
+                <ScalarProperty Name="Salesperson_Ref_3" ColumnName="Salesperson_Ref_3" />
+                <ScalarProperty Name="Salesperson_Ref_2" ColumnName="Salesperson_Ref_2" />
+                <ScalarProperty Name="Salesperson_Ref_1" ColumnName="Salesperson_Ref_1" />
+                <ScalarProperty Name="GL_User_ID" ColumnName="GL_User_ID" />
+                <ScalarProperty Name="Sales_Group" ColumnName="Sales_Group" />
+                <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+                <ScalarProperty Name="Bloomberg_Ref" ColumnName="Bloomberg_Ref" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Segregation_Party" ColumnName="Segregation_Party" />
+                <ScalarProperty Name="Reporting_Curr" ColumnName="Reporting_Curr" />
+                <ScalarProperty Name="Holiday_Calendar" ColumnName="Holiday_Calendar" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Long_Name" ColumnName="Long_Name" />
+                <ScalarProperty Name="Short_Name" ColumnName="Short_Name" />
+                <ScalarProperty Name="Salesperson_Ref" ColumnName="Salesperson_Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduledJobs">
+            <EntityTypeMapping TypeName="BRPSModel.ScheduledJob">
+              <MappingFragment StoreEntitySet="ScheduledJob">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Last_Execution_Time" ColumnName="Last_Execution_Time" />
+                <ScalarProperty Name="Business_Date" ColumnName="Business_Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="From_Time" ColumnName="From_Time" />
+                <ScalarProperty Name="Interval" ColumnName="Interval" />
+                <ScalarProperty Name="Occurence" ColumnName="Occurence" />
+                <ScalarProperty Name="Depend_Job_Id" ColumnName="Depend_Job_Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduledJobParams">
+            <EntityTypeMapping TypeName="BRPSModel.ScheduledJobParam">
+              <MappingFragment StoreEntitySet="ScheduledJobParam">
+                <ScalarProperty Name="Param_Value" ColumnName="Param_Value" />
+                <ScalarProperty Name="Param_Type" ColumnName="Param_Type" />
+                <ScalarProperty Name="Param_Name" ColumnName="Param_Name" />
+                <ScalarProperty Name="Param_Order" ColumnName="Param_Order" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Param_Id" ColumnName="Param_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeRates">
+            <EntityTypeMapping TypeName="BRPSModel.ExchangeRate">
+              <MappingFragment StoreEntitySet="ExchangeRate">
+                <ScalarProperty Name="Price_DateTime" ColumnName="Price_DateTime" />
+                <ScalarProperty Name="Ask_Price" ColumnName="Ask_Price" />
+                <ScalarProperty Name="Bid_Price" ColumnName="Bid_Price" />
+                <ScalarProperty Name="Mid_Price" ColumnName="Mid_Price" />
+                <ScalarProperty Name="Quote_Instr_Ref" ColumnName="Quote_Instr_Ref" />
+                <ScalarProperty Name="Instr_Ref" ColumnName="Instr_Ref" />
+                <ScalarProperty Name="CCYPairID" ColumnName="CCYPairID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="BRPSModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Weekend_Day" ColumnName="Weekend_Day" />
+                <ScalarProperty Name="Holiday_Date" ColumnName="Holiday_Date" />
+                <ScalarProperty Name="Holiday_Id" ColumnName="Holiday_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAccounts">
+            <EntityTypeMapping TypeName="BRPSModel.ClientAccount">
+              <MappingFragment StoreEntitySet="ClientAccount">
+                <ScalarProperty Name="Status_Narrative" ColumnName="Status_Narrative" />
+                <ScalarProperty Name="SCB_TRUST_AC_NO_SG" ColumnName="SCB_TRUST_AC_NO_SG" />
+                <ScalarProperty Name="SCB_IMA_NO_SG" ColumnName="SCB_IMA_NO_SG" />
+                <ScalarProperty Name="KLSE_CDS_Account_Code" ColumnName="KLSE_CDS_Account_Code" />
+                <ScalarProperty Name="SGX_Client_No" ColumnName="SGX_Client_No" />
+                <ScalarProperty Name="EPS_Bank_Name" ColumnName="EPS_Bank_Name" />
+                <ScalarProperty Name="Segregation" ColumnName="Segregation" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Client_DA_Code" ColumnName="Client_DA_Code" />
+                <ScalarProperty Name="CDP_Acct_Linkage_Reject_Code" ColumnName="CDP_Acct_Linkage_Reject_Code" />
+                <ScalarProperty Name="CDP_Acct_Linkage_Revoc_Date" ColumnName="CDP_Acct_Linkage_Revoc_Date" />
+                <ScalarProperty Name="CDP_Acct_Linkage_Date" ColumnName="CDP_Acct_Linkage_Date" />
+                <ScalarProperty Name="CDP_Acct_Linkage_Status" ColumnName="CDP_Acct_Linkage_Status" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="SCB_Truth_Account" ColumnName="SCB_Truth_Account" />
+                <ScalarProperty Name="SCB_Invest_Mgmt_AC" ColumnName="SCB_Invest_Mgmt_AC" />
+                <ScalarProperty Name="Related_Account" ColumnName="Related_Account" />
+                <ScalarProperty Name="Suspense_Account" ColumnName="Suspense_Account" />
+                <ScalarProperty Name="Securities_Account" ColumnName="Securities_Account" />
+                <ScalarProperty Name="Parent_Account" ColumnName="Parent_Account" />
+                <ScalarProperty Name="Trade_Confirmation" ColumnName="Trade_Confirmation" />
+                <ScalarProperty Name="CPF_Bank_Acct" ColumnName="CPF_Bank_Acct" />
+                <ScalarProperty Name="CPF_Bank_No" ColumnName="CPF_Bank_No" />
+                <ScalarProperty Name="SRS_Bank_Acct" ColumnName="SRS_Bank_Acct" />
+                <ScalarProperty Name="SRS_Bank_No" ColumnName="SRS_Bank_No" />
+                <ScalarProperty Name="GIRO_Bank_Acct" ColumnName="GIRO_Bank_Acct" />
+                <ScalarProperty Name="GIRO_Bank_No" ColumnName="GIRO_Bank_No" />
+                <ScalarProperty Name="GIRO_Payment_Type" ColumnName="GIRO_Payment_Type" />
+                <ScalarProperty Name="EPS_Bank_Acct" ColumnName="EPS_Bank_Acct" />
+                <ScalarProperty Name="EPS_Bank_No" ColumnName="EPS_Bank_No" />
+                <ScalarProperty Name="EPS_Close_Date" ColumnName="EPS_Close_Date" />
+                <ScalarProperty Name="EPS_Commence_Date" ColumnName="EPS_Commence_Date" />
+                <ScalarProperty Name="EPS_Link_Status" ColumnName="EPS_Link_Status" />
+                <ScalarProperty Name="Payment_Mode" ColumnName="Payment_Mode" />
+                <ScalarProperty Name="GST_Status_Code" ColumnName="GST_Status_Code" />
+                <ScalarProperty Name="Margin_Credit_Limit" ColumnName="Margin_Credit_Limit" />
+                <ScalarProperty Name="Sell_Limit" ColumnName="Sell_Limit" />
+                <ScalarProperty Name="Buy_Limit" ColumnName="Buy_Limit" />
+                <ScalarProperty Name="Online_Eligible" ColumnName="Online_Eligible" />
+                <ScalarProperty Name="Is_Truth_Account" ColumnName="Is_Truth_Account" />
+                <ScalarProperty Name="Contra_Eligible" ColumnName="Contra_Eligible" />
+                <ScalarProperty Name="Default_Settle_Curr" ColumnName="Default_Settle_Curr" />
+                <ScalarProperty Name="Suspension_Reasons" ColumnName="Suspension_Reasons" />
+                <ScalarProperty Name="Last_Transction_Date" ColumnName="Last_Transction_Date" />
+                <ScalarProperty Name="Last_Amend_Date" ColumnName="Last_Amend_Date" />
+                <ScalarProperty Name="Suspended_Date" ColumnName="Suspended_Date" />
+                <ScalarProperty Name="Closed_Date" ColumnName="Closed_Date" />
+                <ScalarProperty Name="Activated_Date" ColumnName="Activated_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Remisier_Code" ColumnName="Remisier_Code" />
+                <ScalarProperty Name="Party_Custody_Type" ColumnName="Party_Custody_Type" />
+                <ScalarProperty Name="Position_Account_Type" ColumnName="Position_Account_Type" />
+                <ScalarProperty Name="Account_Status" ColumnName="Account_Status" />
+                <ScalarProperty Name="Position_Account_Origin" ColumnName="Position_Account_Origin" />
+                <ScalarProperty Name="Position_Account_Category" ColumnName="Position_Account_Category" />
+                <ScalarProperty Name="Position_Account_Number" ColumnName="Position_Account_Number" />
+                <ScalarProperty Name="Client_Account_Number" ColumnName="Client_Account_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TradeCharges">
+            <EntityTypeMapping TypeName="BRPSModel.TradeCharge">
+              <MappingFragment StoreEntitySet="TradeCharge">
+                <ScalarProperty Name="Trans_Levy_Fee_SGD" ColumnName="Trans_Levy_Fee_SGD" />
+                <ScalarProperty Name="Stamp_Duty_Fee_SGD" ColumnName="Stamp_Duty_Fee_SGD" />
+                <ScalarProperty Name="Settlement_Fee_SGD" ColumnName="Settlement_Fee_SGD" />
+                <ScalarProperty Name="Trading_Fee_GST_SGD" ColumnName="Trading_Fee_GST_SGD" />
+                <ScalarProperty Name="Trading_Fee_SGD" ColumnName="Trading_Fee_SGD" />
+                <ScalarProperty Name="Clearing_Fee_GST_SGD" ColumnName="Clearing_Fee_GST_SGD" />
+                <ScalarProperty Name="Clearing_Fee_SGD" ColumnName="Clearing_Fee_SGD" />
+                <ScalarProperty Name="Commission_GST_SGD" ColumnName="Commission_GST_SGD" />
+                <ScalarProperty Name="Commission_SGD" ColumnName="Commission_SGD" />
+                <ScalarProperty Name="Transaction_Levy_Fee" ColumnName="Transaction_Levy_Fee" />
+                <ScalarProperty Name="Stamp_Duty_Fee" ColumnName="Stamp_Duty_Fee" />
+                <ScalarProperty Name="Settlement_Fee" ColumnName="Settlement_Fee" />
+                <ScalarProperty Name="Trading_Fee_GST" ColumnName="Trading_Fee_GST" />
+                <ScalarProperty Name="Trading_Fee" ColumnName="Trading_Fee" />
+                <ScalarProperty Name="Clearing_Fee_GST" ColumnName="Clearing_Fee_GST" />
+                <ScalarProperty Name="Clearing_Fee" ColumnName="Clearing_Fee" />
+                <ScalarProperty Name="Commission_GST" ColumnName="Commission_GST" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="Curr" ColumnName="Curr" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="Business_Date" ColumnName="Business_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BRPSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Code_Mapping">
+            <EntityTypeMapping TypeName="BRPSModel.Code_Mapping">
+              <MappingFragment StoreEntitySet="Code_Mapping">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Mapped_Value" ColumnName="Mapped_Value" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trans_Code_Desc">
+            <EntityTypeMapping TypeName="BRPSModel.Trans_Code_Desc">
+              <MappingFragment StoreEntitySet="Trans_Code_Desc">
+                <ScalarProperty Name="Trans_Desc" ColumnName="Trans_Desc" />
+                <ScalarProperty Name="Trans_Code" ColumnName="Trans_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaction_Type">
+            <EntityTypeMapping TypeName="BRPSModel.Transaction_Type">
+              <MappingFragment StoreEntitySet="Transaction_Type">
+                <ScalarProperty Name="Trans_Desc" ColumnName="Trans_Desc" />
+                <ScalarProperty Name="Trans_Code" ColumnName="Trans_Code" />
+                <ScalarProperty Name="Payment_Mode" ColumnName="Payment_Mode" />
+                <ScalarProperty Name="Operation_Type" ColumnName="Operation_Type" />
+                <ScalarProperty Name="Trans_Type" ColumnName="Trans_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trade_NarrativeInfo">
+            <EntityTypeMapping TypeName="BRPSModel.Trade_NarrativeInfo">
+              <MappingFragment StoreEntitySet="Trade_NarrativeInfo">
+                <ScalarProperty Name="Version_no" ColumnName="Version_no" />
+                <ScalarProperty Name="Version_date" ColumnName="Version_date" />
+                <ScalarProperty Name="Narrative" ColumnName="Narrative" />
+                <ScalarProperty Name="Narrative_Code" ColumnName="Narrative_Code" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instrument_Price">
+            <EntityTypeMapping TypeName="BRPSModel.Instrument_Price">
+              <MappingFragment StoreEntitySet="Instrument_Price">
+                <ScalarProperty Name="Version_no" ColumnName="Version_no" />
+                <ScalarProperty Name="Version_date" ColumnName="Version_date" />
+                <ScalarProperty Name="Price_date" ColumnName="Price_date" />
+                <ScalarProperty Name="Close_Price" ColumnName="Close_Price" />
+                <ScalarProperty Name="Instr_Ref" ColumnName="Instr_Ref" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warrants">
+            <EntityTypeMapping TypeName="BRPSModel.Warrant">
+              <MappingFragment StoreEntitySet="Warrant">
+                <ScalarProperty Name="Parent_Code" ColumnName="Parent_Code" />
+                <ScalarProperty Name="Separation_Date" ColumnName="Separation_Date" />
+                <ScalarProperty Name="Underlying_Instr" ColumnName="Underlying_Instr" />
+                <ScalarProperty Name="Delivery_Date" ColumnName="Delivery_Date" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+                <ScalarProperty Name="Price_Type" ColumnName="Price_Type" />
+                <ScalarProperty Name="Last_Notice_Date" ColumnName="Last_Notice_Date" />
+                <ScalarProperty Name="Expiry_Date" ColumnName="Expiry_Date" />
+                <ScalarProperty Name="Strike_Price" ColumnName="Strike_Price" />
+                <ScalarProperty Name="Call_Put_Ind" ColumnName="Call_Put_Ind" />
+                <ScalarProperty Name="Payment_Curr" ColumnName="Payment_Curr" />
+                <ScalarProperty Name="Settle_Type" ColumnName="Settle_Type" />
+                <ScalarProperty Name="Warrant_Type" ColumnName="Warrant_Type" />
+                <ScalarProperty Name="Instr_Ref" ColumnName="Instr_Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trades">
+            <EntityTypeMapping TypeName="BRPSModel.Trade">
+              <MappingFragment StoreEntitySet="Trade">
+                <ScalarProperty Name="Allocation_Processing_Indicator" ColumnName="Allocation_Processing_Indicator" />
+                <ScalarProperty Name="Parent_Link_Trade" ColumnName="Parent_Link_Trade" />
+                <ScalarProperty Name="Our_Nostro_BankName" ColumnName="Our_Nostro_BankName" />
+                <ScalarProperty Name="Our_Nostro_Account" ColumnName="Our_Nostro_Account" />
+                <ScalarProperty Name="FOR_No" ColumnName="FOR_No" />
+                <ScalarProperty Name="Execution_SalesPerson" ColumnName="Execution_SalesPerson" />
+                <ScalarProperty Name="Settle_date" ColumnName="Settle_date" />
+                <ScalarProperty Name="EPS_Bank_Name" ColumnName="EPS_Bank_Name" />
+                <ScalarProperty Name="Version_no" ColumnName="Version_no" />
+                <ScalarProperty Name="Version_date" ColumnName="Version_date" />
+                <ScalarProperty Name="Amend_Date" ColumnName="Amend_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Trade_Channel" ColumnName="Trade_Channel" />
+                <ScalarProperty Name="Settle_Transform" ColumnName="Settle_Transform" />
+                <ScalarProperty Name="Cash_Payment_Status" ColumnName="Cash_Payment_Status" />
+                <ScalarProperty Name="Cash_Payment_Mode" ColumnName="Cash_Payment_Mode" />
+                <ScalarProperty Name="Trans_Settle_Type" ColumnName="Trans_Settle_Type" />
+                <ScalarProperty Name="Execution_Number" ColumnName="Execution_Number" />
+                <ScalarProperty Name="With_Reference" ColumnName="With_Reference" />
+                <ScalarProperty Name="SGX_Trade_No" ColumnName="SGX_Trade_No" />
+                <ScalarProperty Name="PSMS_Source" ColumnName="PSMS_Source" />
+                <ScalarProperty Name="Primary_Book" ColumnName="Primary_Book" />
+                <ScalarProperty Name="Settle_Status" ColumnName="Settle_Status" />
+                <ScalarProperty Name="Trade_Status" ColumnName="Trade_Status" />
+                <ScalarProperty Name="Trade_Version" ColumnName="Trade_Version" />
+                <ScalarProperty Name="Price_Type" ColumnName="Price_Type" />
+                <ScalarProperty Name="Settle_Type" ColumnName="Settle_Type" />
+                <ScalarProperty Name="Settle_Code" ColumnName="Settle_Code" />
+                <ScalarProperty Name="TR_Code" ColumnName="TR_Code" />
+                <ScalarProperty Name="Entry_Ind" ColumnName="Entry_Ind" />
+                <ScalarProperty Name="Last_Done_Price" ColumnName="Last_Done_Price" />
+                <ScalarProperty Name="Accrued_Interest_Amt" ColumnName="Accrued_Interest_Amt" />
+                <ScalarProperty Name="Accrued_Interest_Curr" ColumnName="Accrued_Interest_Curr" />
+                <ScalarProperty Name="Accrued_Interest_Rate" ColumnName="Accrued_Interest_Rate" />
+                <ScalarProperty Name="Accrued_Interest_Days" ColumnName="Accrued_Interest_Days" />
+                <ScalarProperty Name="Trades_With_Accrued" ColumnName="Trades_With_Accrued" />
+                <ScalarProperty Name="Contra_Trade_Ref" ColumnName="Contra_Trade_Ref" />
+                <ScalarProperty Name="Trade_No_Ref2" ColumnName="Trade_No_Ref2" />
+                <ScalarProperty Name="Trade_No_Ref1" ColumnName="Trade_No_Ref1" />
+                <ScalarProperty Name="Settle_Amount_SGD" ColumnName="Settle_Amount_SGD" />
+                <ScalarProperty Name="Mult_Div_Ind" ColumnName="Mult_Div_Ind" />
+                <ScalarProperty Name="Exch_Rate" ColumnName="Exch_Rate" />
+                <ScalarProperty Name="Open_Amount" ColumnName="Open_Amount" />
+                <ScalarProperty Name="Settle_Amount" ColumnName="Settle_Amount" />
+                <ScalarProperty Name="Settle_Curr" ColumnName="Settle_Curr" />
+                <ScalarProperty Name="Trade_Principal" ColumnName="Trade_Principal" />
+                <ScalarProperty Name="Trade_Curr" ColumnName="Trade_Curr" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Open_Qty" ColumnName="Open_Qty" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+                <ScalarProperty Name="Value_Date" ColumnName="Value_Date" />
+                <ScalarProperty Name="Trade_Date" ColumnName="Trade_Date" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="Operation_Type" ColumnName="Operation_Type" />
+                <ScalarProperty Name="Sub_Trade_Type" ColumnName="Sub_Trade_Type" />
+                <ScalarProperty Name="Trade_Type" ColumnName="Trade_Type" />
+                <ScalarProperty Name="Client_Number" ColumnName="Client_Number" />
+                <ScalarProperty Name="Trade_Ref" ColumnName="Trade_Ref" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="Business_Date" ColumnName="Business_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_CashBalance">
+            <EntityTypeMapping TypeName="BRPSModel.Client_CashBalance">
+              <MappingFragment StoreEntitySet="Client_CashBalance">
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Ccy" ColumnName="Ccy" />
+                <ScalarProperty Name="Client_Account_Number" ColumnName="Client_Account_Number" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_StockBalance">
+            <EntityTypeMapping TypeName="BRPSModel.Client_StockBalance">
+              <MappingFragment StoreEntitySet="Client_StockBalance">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Ccy" ColumnName="Ccy" />
+                <ScalarProperty Name="Client_Account_Number" ColumnName="Client_Account_Number" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TradeCharge_AmendedComm">
+            <EntityTypeMapping TypeName="BRPSModel.TradeCharge_AmendedComm">
+              <MappingFragment StoreEntitySet="TradeCharge_AmendedComm">
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Trade_Date" ColumnName="Trade_Date" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="Trade_Ref" ColumnName="Trade_Ref" />
+                <ScalarProperty Name="Client_Number" ColumnName="Client_Number" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trade_Status">
+            <EntityTypeMapping TypeName="BRPSModel.Trade_Status">
+              <MappingFragment StoreEntitySet="Trade_Status">
+                <ScalarProperty Name="Import_date" ColumnName="Import_date" />
+                <ScalarProperty Name="Trade_Type" ColumnName="Trade_Type" />
+                <ScalarProperty Name="Settle_date" ColumnName="Settle_date" />
+                <ScalarProperty Name="Settle_Status" ColumnName="Settle_Status" />
+                <ScalarProperty Name="Trade_Ref" ColumnName="Trade_Ref" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="Business_Date" ColumnName="Business_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trade_Cancelled">
+            <EntityTypeMapping TypeName="BRPSModel.Trade_Cancelled">
+              <MappingFragment StoreEntitySet="Trade_Cancelled">
+                <ScalarProperty Name="Allocation_Processing_Indicator" ColumnName="Allocation_Processing_Indicator" />
+                <ScalarProperty Name="Parent_Link_Trade" ColumnName="Parent_Link_Trade" />
+                <ScalarProperty Name="Our_Nostro_BankName" ColumnName="Our_Nostro_BankName" />
+                <ScalarProperty Name="Our_Nostro_Account" ColumnName="Our_Nostro_Account" />
+                <ScalarProperty Name="FOR_No" ColumnName="FOR_No" />
+                <ScalarProperty Name="Execution_SalesPerson" ColumnName="Execution_SalesPerson" />
+                <ScalarProperty Name="Settle_date" ColumnName="Settle_date" />
+                <ScalarProperty Name="EPS_Bank_Name" ColumnName="EPS_Bank_Name" />
+                <ScalarProperty Name="Version_no" ColumnName="Version_no" />
+                <ScalarProperty Name="Version_date" ColumnName="Version_date" />
+                <ScalarProperty Name="Amend_Date" ColumnName="Amend_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Trade_Channel" ColumnName="Trade_Channel" />
+                <ScalarProperty Name="Settle_Transform" ColumnName="Settle_Transform" />
+                <ScalarProperty Name="Cash_Payment_Status" ColumnName="Cash_Payment_Status" />
+                <ScalarProperty Name="Cash_Payment_Mode" ColumnName="Cash_Payment_Mode" />
+                <ScalarProperty Name="Trans_Settle_Type" ColumnName="Trans_Settle_Type" />
+                <ScalarProperty Name="Execution_Number" ColumnName="Execution_Number" />
+                <ScalarProperty Name="With_Reference" ColumnName="With_Reference" />
+                <ScalarProperty Name="SGX_Trade_No" ColumnName="SGX_Trade_No" />
+                <ScalarProperty Name="PSMS_Source" ColumnName="PSMS_Source" />
+                <ScalarProperty Name="Primary_Book" ColumnName="Primary_Book" />
+                <ScalarProperty Name="Settle_Status" ColumnName="Settle_Status" />
+                <ScalarProperty Name="Trade_Status" ColumnName="Trade_Status" />
+                <ScalarProperty Name="Trade_Version" ColumnName="Trade_Version" />
+                <ScalarProperty Name="Price_Type" ColumnName="Price_Type" />
+                <ScalarProperty Name="Settle_Type" ColumnName="Settle_Type" />
+                <ScalarProperty Name="Settle_Code" ColumnName="Settle_Code" />
+                <ScalarProperty Name="TR_Code" ColumnName="TR_Code" />
+                <ScalarProperty Name="Entry_Ind" ColumnName="Entry_Ind" />
+                <ScalarProperty Name="Last_Done_Price" ColumnName="Last_Done_Price" />
+                <ScalarProperty Name="Accrued_Interest_Amt" ColumnName="Accrued_Interest_Amt" />
+                <ScalarProperty Name="Accrued_Interest_Curr" ColumnName="Accrued_Interest_Curr" />
+                <ScalarProperty Name="Accrued_Interest_Rate" ColumnName="Accrued_Interest_Rate" />
+                <ScalarProperty Name="Accrued_Interest_Days" ColumnName="Accrued_Interest_Days" />
+                <ScalarProperty Name="Trades_With_Accrued" ColumnName="Trades_With_Accrued" />
+                <ScalarProperty Name="Contra_Trade_Ref" ColumnName="Contra_Trade_Ref" />
+                <ScalarProperty Name="Trade_No_Ref2" ColumnName="Trade_No_Ref2" />
+                <ScalarProperty Name="Trade_No_Ref1" ColumnName="Trade_No_Ref1" />
+                <ScalarProperty Name="Settle_Amount_SGD" ColumnName="Settle_Amount_SGD" />
+                <ScalarProperty Name="Mult_Div_Ind" ColumnName="Mult_Div_Ind" />
+                <ScalarProperty Name="Exch_Rate" ColumnName="Exch_Rate" />
+                <ScalarProperty Name="Open_Amount" ColumnName="Open_Amount" />
+                <ScalarProperty Name="Settle_Amount" ColumnName="Settle_Amount" />
+                <ScalarProperty Name="Settle_Curr" ColumnName="Settle_Curr" />
+                <ScalarProperty Name="Trade_Principal" ColumnName="Trade_Principal" />
+                <ScalarProperty Name="Trade_Curr" ColumnName="Trade_Curr" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Open_Qty" ColumnName="Open_Qty" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+                <ScalarProperty Name="Value_Date" ColumnName="Value_Date" />
+                <ScalarProperty Name="Trade_Date" ColumnName="Trade_Date" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="Operation_Type" ColumnName="Operation_Type" />
+                <ScalarProperty Name="Sub_Trade_Type" ColumnName="Sub_Trade_Type" />
+                <ScalarProperty Name="Trade_Type" ColumnName="Trade_Type" />
+                <ScalarProperty Name="Client_Number" ColumnName="Client_Number" />
+                <ScalarProperty Name="Trade_Ref" ColumnName="Trade_Ref" />
+                <ScalarProperty Name="Trade_No" ColumnName="Trade_No" />
+                <ScalarProperty Name="Business_Date" ColumnName="Business_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instruments">
+            <EntityTypeMapping TypeName="BRPSModel.Instrument">
+              <MappingFragment StoreEntitySet="Instrument">
+                <ScalarProperty Name="Group_Code" ColumnName="Group_Code" />
+                <ScalarProperty Name="Close_Price" ColumnName="Close_Price" />
+                <ScalarProperty Name="Symbol_Code" ColumnName="Symbol_Code" />
+                <ScalarProperty Name="Version_No" ColumnName="Version_No" />
+                <ScalarProperty Name="Version_Date" ColumnName="Version_Date" />
+                <ScalarProperty Name="Settlemet_Driver" ColumnName="Settlemet_Driver" />
+                <ScalarProperty Name="Security_Tax_Type" ColumnName="Security_Tax_Type" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="Margin_Limit" ColumnName="Margin_Limit" />
+                <ScalarProperty Name="Margin_Ratio" ColumnName="Margin_Ratio" />
+                <ScalarProperty Name="Margin_Category" ColumnName="Margin_Category" />
+                <ScalarProperty Name="Domicile_Country" ColumnName="Domicile_Country" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Security_Type" ColumnName="Security_Type" />
+                <ScalarProperty Name="CFI_Code" ColumnName="CFI_Code" />
+                <ScalarProperty Name="COMM_Code" ColumnName="COMM_Code" />
+                <ScalarProperty Name="SEDL_Code" ColumnName="SEDL_Code" />
+                <ScalarProperty Name="RIC_Code" ColumnName="RIC_Code" />
+                <ScalarProperty Name="BMBG_Code" ColumnName="BMBG_Code" />
+                <ScalarProperty Name="ISIN_Code" ColumnName="ISIN_Code" />
+                <ScalarProperty Name="SG_CDP_Code" ColumnName="SG_CDP_Code" />
+                <ScalarProperty Name="Local_Code" ColumnName="Local_Code" />
+                <ScalarProperty Name="Proprietary_Code" ColumnName="Proprietary_Code" />
+                <ScalarProperty Name="Delisting_Date" ColumnName="Delisting_Date" />
+                <ScalarProperty Name="Listing_Date" ColumnName="Listing_Date" />
+                <ScalarProperty Name="Active_Ind" ColumnName="Active_Ind" />
+                <ScalarProperty Name="Qty_Decimal_Place" ColumnName="Qty_Decimal_Place" />
+                <ScalarProperty Name="Min_Tradeable_Qty" ColumnName="Min_Tradeable_Qty" />
+                <ScalarProperty Name="Price_Type" ColumnName="Price_Type" />
+                <ScalarProperty Name="Price_Multiplier" ColumnName="Price_Multiplier" />
+                <ScalarProperty Name="Price_Divisor" ColumnName="Price_Divisor" />
+                <ScalarProperty Name="Price_Decimal_Place" ColumnName="Price_Decimal_Place" />
+                <ScalarProperty Name="Book" ColumnName="Book" />
+                <ScalarProperty Name="Settle_Instr" ColumnName="Settle_Instr" />
+                <ScalarProperty Name="Denom_Qty" ColumnName="Denom_Qty" />
+                <ScalarProperty Name="Denom_Ccy" ColumnName="Denom_Ccy" />
+                <ScalarProperty Name="Main_Market" ColumnName="Main_Market" />
+                <ScalarProperty Name="Short_Name" ColumnName="Short_Name" />
+                <ScalarProperty Name="Long_Name" ColumnName="Long_Name" />
+                <ScalarProperty Name="Instr_Group" ColumnName="Instr_Group" />
+                <ScalarProperty Name="Instr_Ref" ColumnName="Instr_Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
